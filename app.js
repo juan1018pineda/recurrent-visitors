@@ -40,11 +40,11 @@ app.get("/", async (req, res) => {
   }
   await visitor.save();
   const visitors = await Visitor.find();
-  let table = `<table><thead><th>Id</th><th>Name</th><th>Visits</th></thead>`;
+  let table = `<table><thead><tr><th>Id</th><th>Name</th><th>Visits</th></tr></thead><tbody>`;
   visitors.forEach((visitor) => {
     table += `<tr><td>${visitor._id}</td><td>${visitor.name}</td><td>${visitor.count}</td></tr>`;
   });
-  table += `</table>`;
+  table += `</tbody></table>`;
   res.send(table);
 });
 
