@@ -22,7 +22,7 @@ const schema = {
 const Visitor = mongoose.model("visitors", schema);
 
 //Controller
-app.get("/", async (req, res) => {
+app.get("/", (req, res) => {
   const name =
     req.query.name == undefined || req.query.name == ""
       ? "Anónimo"
@@ -31,7 +31,7 @@ app.get("/", async (req, res) => {
     const visitor = new Visitor({ name, count: 1 });
     visitor.save((err, visitor) => {});
   } else {
-    const visitor = await Visitor.findOne({ name });
+    const visitor = Visitor.findOne({ name });
     if (visitor) {
       visitor.count += 1;
       visitor.save((err, visitor) => {});
