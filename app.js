@@ -38,9 +38,9 @@ app.get("/", async (req, res) => {
       visitor = new Visitor({ name, count: 1 });
     }
   }
-  await visitor.save((err, visitor) => {});
+  await visitor.save();
   const visitors = await Visitor.find();
-  let table = `<table><thead><tr><th>Id</th><th>Name</th><th>Visits</th></tr></thead>`;
+  let table = `<table><tr><thead><th>Id</th><th>Name</th><th>Visits</th></thead></tr>`;
   visitors.forEach((visitor) => {
     table += `<tr><td>${visitor._id}</td><td>${visitor.name}</td><td>${visitor.count}</td></tr>`;
   });
